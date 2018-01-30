@@ -15,16 +15,16 @@ public class ClientWorker implements Runnable {
         this.serverSocket = s;
     }
 
-    private synchronized void measuredWeather() {
+    private synchronized void getWeatherIndex() {
         try {
             WeatherIndexGenerator w = new WeatherIndexGenerator();
-            String currentWeatherState = w.currentStatus();
+            String weatherIndex = w.currentIndex();
 
             /* output data stream initialization */
             DataOutputStream outToClient = new DataOutputStream(serverSocket.getOutputStream());
 
             /* write() */
-            outToClient.writeBytes(currentWeatherState + "\n");
+            outToClient.writeBytes(weatherIndex + "\n");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class ClientWorker implements Runnable {
     }
 
     public void run() {
-        measuredWeather();
+        getWeatherIndex();
         System.out.print("Waiting for client... ");
     }
 }

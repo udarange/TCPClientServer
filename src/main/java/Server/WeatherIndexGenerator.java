@@ -7,7 +7,7 @@ import java.util.Random;
  * Created by archana on 1/30/18.
  */
 public class WeatherIndexGenerator {
-    public String currentStatus() {
+    public String currentIndex() {
         /* Generate random weather state number*/
         Random r = new Random();
 
