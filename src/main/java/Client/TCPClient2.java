@@ -34,7 +34,7 @@ public class TCPClient2 {
             }
 
             /* wait 5 seconds */
-            Thread.sleep(5000);
+            Thread.sleep(100);
         }
     }
 }
