@@ -1,3 +1,7 @@
+/*
+ * (C) Copyright 2010-2018 hSenid Mobile Solutions (Pvt) Limited. All Rights Reserved. These materials are unpublished, proprietary, confidential source code of hSenid Mobile Solutions (Pvt) Limited and constitute a TRADE SECRET of hSenid Mobile Solutions (Pvt) Limited. hSenid Mobile Solutions (Pvt) Limited retains all title to and intellectual property rights in these materials.
+ */
+
 package Server;
 /**
  * TCP Server impl
@@ -10,14 +14,13 @@ import java.net.Socket;
 public class TCPServer {
     public static void main(String argv[]) throws Exception {
         ServerSocket serverSocket = new ServerSocket(4455);
-        System.out.print("Waiting for client... ");
+        System.out.println("Server Started ....");
 
         while (true) {
             Socket s = serverSocket.accept();
-            ClientWorker c = new ClientWorker(s);
+            ClientHandler obj = new ClientHandler(s);
 
-            Thread thread = new Thread(c);
-            thread.start();
+            obj.start();
         }
     }
 }

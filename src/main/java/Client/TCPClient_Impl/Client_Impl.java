@@ -1,4 +1,5 @@
-package Client; /**
+package Client.TCPClient_Impl;
+/**
  * TCP Client iml
  * Created by archana on 1/30/18.
  */
@@ -6,8 +7,11 @@ package Client; /**
 import java.io.*;
 import java.net.*;
 
-public class TCPClient1 {
-    public static void main(String argv[]) throws IOException, InterruptedException {
+/**
+ * client object impl
+ */
+public class Client_Impl {
+    public void clientGenerator(int num) throws IOException, InterruptedException {
         String updatedWeather;
 
         while (true) {
@@ -22,11 +26,11 @@ public class TCPClient1 {
                 /* read server response */
                 updatedWeather = inFromServer.readLine();
 
-                System.out.println("RECEIVED FROM SERVER: " + updatedWeather);
+                System.out.println("RECEIVED FROM SERVER TO " + num + " : " + updatedWeather);
 
                 /* close() */
                 clientSocket.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 System.out.println("ERROR");
                 System.exit(1);
             }

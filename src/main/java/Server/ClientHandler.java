@@ -8,14 +8,14 @@ import java.net.Socket;
  * Thread impl
  * Created by archana on 1/30/18.
  */
-public class ClientWorker implements Runnable {
-    private Socket serverSocket;
+public class ClientHandler extends Thread {
+    private static Socket serverSocket;
 
-    ClientWorker(Socket s) {
-        this.serverSocket = s;
+    ClientHandler(Socket s) {
+        serverSocket = s;
     }
 
-    private synchronized void getWeatherIndex() {
+    private void getWeatherIndex() {
         try {
             WeatherIndexGenerator w = new WeatherIndexGenerator();
             String weatherIndex = w.currentIndex();
@@ -31,6 +31,7 @@ public class ClientWorker implements Runnable {
         }
     }
 
+    @Override
     public void run() {
         getWeatherIndex();
         System.out.print("Waiting for client... ");
